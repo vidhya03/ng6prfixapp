@@ -1,13 +1,19 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef } from "@angular/core";
 
 @Directive({
-  selector: '[vidhyaUnless]'
+  selector: "[vidhyaUnless]"
 })
 export class UnlessDirective {
+  @Input()
+  set unless(condition: boolean) {
 
-  @Input() unless ;
+    if (!condition) {
+      this.vcRef.createEmbeddedView(this.templaeRef);
+    }else {
+      this.vcRef.clear();
+    }
 
+  }
 
-  constructor() { }
-
+  constructor(private templaeRef: TemplateRef<any>, private vcRef: ViewContainerRef) {}
 }
