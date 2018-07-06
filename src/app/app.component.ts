@@ -12,4 +12,5 @@ import {FormsModule} from '@angular/forms';
 })
 export class AppComponent {
   title = 'vidhya';
+  value = 10;
 }
